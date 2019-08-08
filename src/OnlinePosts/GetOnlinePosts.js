@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './GetOnline.css'
-
 class GetOnlinePosts extends Component {
     constructor(props){
         super(props)
@@ -8,11 +7,14 @@ class GetOnlinePosts extends Component {
             error : null,
             isLoaded : false,
             posts : [] ,
-            to_send : [],
         }
         this.onChange = this.onChange.bind(this)
     }
     componentDidMount(){
+        this.getData()
+    }
+
+    getData(){
         fetch('http://localhost:8000/rest/v1/snacks/')
         .then( response => response.json())
         .then(
@@ -33,11 +35,15 @@ class GetOnlinePosts extends Component {
         )
     }
 
+    refreshPage(){ 
+        window.location.reload(); 
+    }
+
     isActiveChanged(e, index){
         let value = e.target.checked
         var data = this.state.posts;
 
-        data[index].is_active = value;
+        data[index].is_active = false;
         this.setState({
             posts: data
         })
@@ -78,7 +84,7 @@ class GetOnlinePosts extends Component {
             body: JSON.stringify(
                 data
             ),
-        })
+        }).then(() => this.getData())
       };
 
     handleAddShareholder = () => {
@@ -112,20 +118,22 @@ class GetOnlinePosts extends Component {
                                 <tr>
                                     <th>Name</th>
                                     <th>Price</th>
-                                    <th>Is Active</th>
                                 </tr>
                                 {posts.map((post,index) => {
-                                    return(
+                                    return post.is_active ?(
+
                                             <tr>
                                                 <td>{!post.isNew ? post.name : <input type='text' name='name' value={post.name} onChange={(e)=>this.onChange(e,index)}/>}</td>
                                                 <td>{!post.isNew ? post.price : <input type='number' step='0.1' min='0' name='price' value={parseFloat(post.price)} onChange={(e)=>this.onChange(e,index)}/>}</td>
-                                                <td><input type="checkbox" defaultChecked={post.is_active ? true: false} onChange={(e)=>this.isActiveChanged(e,index)}></input></td>
+                                                <td><button onClick={(e)=>this.isActiveChanged(e,index)} >X</button></td>
+                                                {/* <td><input type="checkbox" defaultChecked={post.is_active ? true: false} onChange={(e)=>this.isActiveChanged(e,index)}></input></td> */}
                                             </tr>
-                                    );
+                                    ):''
                                 })}
                             </table>
                             <alert value="this.state"></alert>
-                        <button type="button" id="update" onClick={this.handlePostDataSend}>Update Menu</button>
+                        <button type="button" id="update" onClick={this.handlePostDataSend }>Update Menu</button>
+
                     </div>
                 </div>
             )
