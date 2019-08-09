@@ -31,3 +31,14 @@
     transform: rotate(360deg);
   }
 }
+#buttonc{
+  background-color: #fa7128;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+}
+table{
+  margin-left:auto;
+  margin-top:auto;
+}
