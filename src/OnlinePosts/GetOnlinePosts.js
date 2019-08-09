@@ -110,30 +110,30 @@ class GetOnlinePosts extends Component {
                     <h1>INCEDO</h1>
                     <div id="abc">.</div>
                     <h2>Order Configuration</h2>
-                <div className="container"><br/>
-                        <button type="button" onClick={this.handleAddShareholder} class="addB">Add an Item</button>
-                        <br/>
-                        <br/>
-                            <table class="table">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                </tr>
-                                {posts.map((post,index) => {
-                                    return post.is_active ?(
-
+                    <div className="container" class="p"><br/>
+                        <div class="gray1">
+                            <button type="button" onClick={this.handleAddShareholder} class="addB">ADD MENU ITEM</button>
+                            <br/>
+                            <div class="white2">
+                                <table class="table">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    {posts.map((post,index) => {
+                                        return post.is_active ?(
                                             <tr>
                                                 <td>{!post.isNew ? post.name : <input type='text' name='name' value={post.name} onChange={(e)=>this.onChange(e,index)}/>}</td>
                                                 <td>{!post.isNew ? post.price : <input type='number' step='0.1' min='0' name='price' value={parseFloat(post.price)} onChange={(e)=>this.onChange(e,index)}/>}</td>
-                                                <td><button onClick={(e)=>this.isActiveChanged(e,index)} >X</button></td>
-                                                {/* <td><input type="checkbox" defaultChecked={post.is_active ? true: false} onChange={(e)=>this.isActiveChanged(e,index)}></input></td> */}
+                                                <td><button onClick={(e)=>this.isActiveChanged(e,index)} class="cross">X</button></td>
                                             </tr>
-                                    ):''
-                                })}
-                            </table>
-                            <alert value="this.state"></alert>
-                        <button type="button" id="update" onClick={this.handlePostDataSend }>Update Menu</button>
-
+                                        ):''
+                                    })}
+                                </table>
+                                <br/>
+                                <button type="button" id="update" onClick={this.handlePostDataSend } class="updateB">Update Menu</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )
