@@ -1,30 +1,22 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom'
-import GetOnlinePosts from './OnlinePosts/GetOnlinePosts';
-import './App.css';
-import GetDates from './GetDates';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import My_order from'./Scripts/my_order';
+import './App.css'
+import incedo from './download.png'
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>INCEDO</h1>
-        <div id="abc">.</div>
-        <br/>
-        <h2>ADMIN</h2>
-        <br/><br/>
-        <div className="container">
-          <table>
-            <tr>
-              <th><button id="buttonc" onClick={()=>ReactDOM.render(<GetOnlinePosts/>, document.getElementById('root'))}>MENU CONFIGURATION</button></th>
-              <th width="50"></th>
-              <th><button id="buttonc" onClick={()=>ReactDOM.render(<GetDates/>, document.getElementById('root'))}>REPORT GENERATION</button></th>
-            </tr>            
-            </table>
-        </div>
+function App() {
+  return (
+    <body>
+      <div className="App">
+        <header className="App-header">
+          <center>
+            <img src={incedo} class="cent" alt="Incedo Logo" width="50%"></img><br/>
+            <button onClick = {()=>ReactDOM.render(<My_order/>, document.getElementById('root'))} class="appB">Place My order</button>
+          </center>      
+        </header>
       </div>
-    );
-  }
+    </body>
+  );
 }
 
 export default App;

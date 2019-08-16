@@ -1,6 +1,11 @@
 .title{
     font-size: 18pt;
     color: blueviolet;
+    float: left;
+    text-align: start;
+    color: orangered;
+    padding-left: 80px;
+    margin: 3px;
 }
 .item{
     margin: 10px;
@@ -18,13 +23,7 @@ th, td, tr{
     padding: 5px;
     color: black;
 }
-#title{
-    float: left;
-    text-align: start;
-    color: orangered;
-    padding-left: 80px;
-    margin: 3px;
-}
+
 #from_date, #to_date{
     float: left;
     text-align: start;
@@ -65,10 +64,25 @@ h1{
     height: 5px;
 }
 
-button{
+.getD{
     background-color: #fa7128;
     color: white;
     border: none;
     border-radius: 4px;
     padding: 10px;
+}
+
+.getM{
+    background-color: #fa7128;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    position: absolute;
+    top: 20%;
+    left: 100%;
+}
+
+.tabular{
+    padding: 20px;
 }

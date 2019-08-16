@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './GetOnline.css'
+import ReactDOM from 'react-dom';
+import GetDates from './GetDates';
+
 class GetOnlinePosts extends Component {
     constructor(props){
         super(props)
@@ -40,7 +43,6 @@ class GetOnlinePosts extends Component {
     }
 
     isActiveChanged(e, index){
-        let value = e.target.checked
         var data = this.state.posts;
 
         data[index].is_active = false;
@@ -65,15 +67,20 @@ class GetOnlinePosts extends Component {
         })
     }
 
+    handleKeyPress(e){
+        if(e.target.value === '-'){
+            alert("Price can't be negative.");
+        }
+    }
+
     handlePostDataSend = () => {
         debugger;
         var myPosts = this.state.posts;
-
-
         var data = myPosts.filter(function(post){
             return (post.name!=="" && post.price!=="");
         }).map(function({name, price, is_active}){
             return {name, price, is_active};
+
         });
 
         fetch('http://127.0.0.1:8000/user/order/bulk_create/', {
@@ -85,6 +92,7 @@ class GetOnlinePosts extends Component {
                 data
             ),
         }).then(() => this.getData())
+        alert("Menu Updated Successfully");
       };
 
     handleAddShareholder = () => {
@@ -110,23 +118,30 @@ class GetOnlinePosts extends Component {
                     <h1>INCEDO</h1>
                     <div id="abc">.</div>
                     <br/><br/>
-                    <h2>Order Configuration</h2>
+                    <table class="topOne">
+                        <tr>
+                            <th><h2>MENU CONFIGURATION</h2></th>
+                            <th width="850"></th>
+                            <th><button onClick={()=>ReactDOM.render(<GetDates/>, document.getElementById('root'))} class="getD">REPORT GENERATION</button></th>
+                        </tr>
+                    </table>
+                   
                     <div className="container" class="p"><br/>
                         <div class="gray1">
                             <br/><br/>
                             <div class="white2">
                             {/* <br/><br/><br/><br/> */}
-                                <table class="table">
+                                <table>
                                     <tr>
                                         <th  width="240">Name</th>
                                         <th  width="240">Price</th>
-                                        <th  width="60"></th>
+                                        <th  width="240"></th>
                                     </tr>
                                     {posts.map((post,index) => {
                                         return post.is_active ?(
                                             <tr>
                                                 <td >{!post.isNew ? post.name : <input type='text' name='name' value={post.name} onChange={(e)=>this.onChange(e,index)} width="200"/>}</td>
-                                                <td >{!post.isNew ? post.price : <input type='number' step='0.1' min='0' name='price' value={parseFloat(post.price)} onChange={(e)=>this.onChange(e,index)} width="200"/>}</td>
+                                                <td >{!post.isNew ? post.price : <input type='number' min='0.0' name='price' onKeyPress={(e)=>this.handleKeyPress(e)} value={parseFloat(post.price)} onChange={(e)=>this.onChange(e,index)} width="200"/>}</td>
                                                 <td ><button onClick={(e)=>this.isActiveChanged(e,index)} class="cross">X</button></td>
                                             </tr>
                                         ):''
