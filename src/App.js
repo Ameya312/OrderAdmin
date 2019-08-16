@@ -11,6 +11,7 @@ class App extends  React.Component {
     this.state = { //state is by default an object
       Username:"blank",
       PWD:"blank",
+      LoginStatus: false,
    }
    this.handleUsername = this.handleUsername.bind(this);
    this.handlePass = this.handlePass.bind(this);
@@ -30,6 +31,21 @@ else{
 }
 
 }
+fetchCredintials(){
+  fetch("http://localhost:8080/login?userName="+this.state.Username+"&userName="+this.state.PWD+"", {
+
+      method:"GET"
+  }).then(response => {
+console.log(response)
+          return response.text()
+      }).then(json => {
+          this.setState({ 
+              LoginDetail:json
+          });
+      });
+}
+
+
 
 handleUsername(e){
   this.setState({Username:e.target.value});
