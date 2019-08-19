@@ -232,11 +232,12 @@ class My_order extends React.Component{
           <div class="gray1">
             <div class="white2">
               <form onSubmit={this.SaveOrderDetails}>
-                <table>
+                <label>{this.state.EmpName}</label>
+                {/* <table>
                   <tr><td><label>Emp Id</label></td><td><input type="text" name="empId" maxLength='6' minLength='6' onChange={this.SetId} required></input></td>
                   <td><label>Emp name</label></td><td><input type="text" name="empname" onChange={this.SetName} required></input></td>
                   <td><label>contact no.</label></td><td><input type="text" name="contactNo." id="Contact" pattern="[0-9]*" onChange={this.SetPhone} maxLength='10' minLength='10' required></input></td></tr>
-                </table>
+                </table> */}
                 <br/><br/>
                 <table id ="customers">
                   <tr>

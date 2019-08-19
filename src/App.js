@@ -12,7 +12,7 @@ class App extends  React.Component {
     this.state = { //state is by default an object
       Username:"blank",
       PWD:"blank",
-      LoginDetail: false,
+      LoginDetail: [],
    }
    this.handleUsername = this.handleUsername.bind(this);
    this.handlePass = this.handlePass.bind(this);
@@ -31,7 +31,7 @@ fetchCredintials(){
       }),
   }).then(response => {
 console.log(response)
-          return response.text()
+          return response.json()
       }).then(json => {
           this.setState({ 
               LoginDetail:json
@@ -42,17 +42,18 @@ console.log(response)
 }
 
 changePage = ()=>{
-  console.log(this.state.LoginDetail)
-if(this.state.LoginDetail=="USER")
+  // console.log(this.state.LoginDetail.login_details.role)
+  if(this.state.LoginDetail.login_details!=null){
+if(this.state.LoginDetail.login_details.role=="USER")
 {
 ReactDOM.render(<My_order/>, document.getElementById('root'))
 }
-else if(this.state.LoginDetail=="ADMIN")
+else if(this.state.LoginDetail.login_details.role=="ADMIN")
 {
 ReactDOM.render(<AdminHome/>, document.getElementById('root'))
 }
-if(this.state.LoginDetail=="NOT REGISTERED")
-{
+  }
+else{
 alert("Incorrect Credintials");
 }
   

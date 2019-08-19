@@ -40,7 +40,6 @@ class Register extends React.Component {
   }
 
   registerUser(){
-    debugger;
     fetch('http://localhost:8080/register', {
       method:'POST',
       headers: {     
