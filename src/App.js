@@ -68,7 +68,7 @@ handlePass(e){
 }
   
 signUp(){
-  ReactDOM.render(<Register/>, document.getElementById('root'))
+  ReactDOM.render(<Register role="USER"/>, document.getElementById('root'))
 }
   render (){
 

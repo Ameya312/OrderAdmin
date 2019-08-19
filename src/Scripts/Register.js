@@ -16,7 +16,7 @@ class Register extends React.Component {
         EmployeeContact : "",
         userName : "",
         password:"",
-        role:"USER"
+        role:this.props.role
      }
      this.handleEmployeeName = this.handleEmployeeName.bind(this);
      this.handleEmployeeId = this.handleEmployeeId.bind(this);
