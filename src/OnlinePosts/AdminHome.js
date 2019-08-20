@@ -14,16 +14,17 @@ class AdminHome extends Component {
         <div id="abc">.</div>
         <br/>
         <h2>ADMIN</h2>
-        <button class="button1"  onClick={()=>ReactDOM.render(<Register role = "ADMIN"/>, document.getElementById('root'))}>Register new admin</button> 
-        <br/><br/><br/><button class="button1"  onClick={()=>ReactDOM.render(<My_order role = "ADMIN"/>, document.getElementById('root'))}>Order Snacks</button>      
-     
-        <br/><br/>
         <div className="container">
           <table>
             <tr>
-              <th><button class="getD" onClick={()=>ReactDOM.render(<GetOnlinePosts/>, document.getElementById('root'))}>MENU CONFIGURATION</button></th>
+              <th><button class="getD"  onClick={()=>ReactDOM.render(<GetOnlinePosts/>, document.getElementById('root'))}>MENU CONFIGURATION</button></th>
               <th width="50"></th>
               <th><button class="getD" onClick={()=>ReactDOM.render(<GetDates/>, document.getElementById('root'))}>REPORT GENERATION</button></th>
+            </tr> 
+            <tr>
+              <th><button class="getD addwidth" onClick={()=>ReactDOM.render(<Register role = "ADMIN"/>, document.getElementById('root'))}>Register new admin</button></th>
+              <th width="50"></th>
+              <th><button class="getD addwidth"  onClick={()=>ReactDOM.render(<My_order role = "ADMIN"/>, document.getElementById('root'))}>Order Snacks</button></th>
             </tr> 
             </table>
         </div>

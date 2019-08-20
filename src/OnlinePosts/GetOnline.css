@@ -86,3 +86,7 @@ table{
     border-radius: 4px;
     padding: 10px;
 }
+
+.addwidth{
+    width: 100%;
+}
