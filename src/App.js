@@ -20,6 +20,10 @@ class App extends  React.Component {
   }
 
 fetchCredintials(){
+    if(this.state.Username=="" || this.state.PWD==""){
+alert("USER name and Password  are Required Fields");
+    }
+    else{
   fetch('http://localhost:8080/login', {
       method:'POST',
       headers: {     
@@ -39,6 +43,7 @@ console.log(response)
             this.changePage();
           });
       });
+    }
 }
 
 changePage = ()=>{
