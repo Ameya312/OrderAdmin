@@ -81,10 +81,10 @@ signUp(){
               <img src={incedo} alt="Incedo Logo" width="50%"/>
               <table>
               <tr>
-                <td><label>userId</label></td><td><input type="text" placeholder="enter userId" name="formUserName"  onChange={this.handleUsername}></input></td>
+                <td><label>Employee ID</label></td><td><input type="text" placeholder="enter here" name="formUserName"  onChange={this.handleUsername}></input></td>
               </tr>
               <tr>
-                <td><label>password</label></td><td><input type="password" placeholder="enter password" name="PWD" onChange={this.handlePass}></input></td>
+                <td><label>password</label></td><td><input type="password" placeholder="enter here" name="PWD" onChange={this.handlePass}></input></td>
               </tr>
               <tr>
                 <td><button onClick = {()=>this.fetchCredintials()} class="appB">login</button></td>
