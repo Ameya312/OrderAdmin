@@ -22,6 +22,7 @@ class Register extends React.Component {
      this.handleEmployeeId = this.handleEmployeeId.bind(this);
      this.handleEmployeeContact = this.handleEmployeeContact.bind(this);
      this.handlepassword = this.handlepassword.bind(this);
+     this.registerUser = this.registerUser.bind(this);
 
   }
   handleEmployeeName(e){
@@ -39,7 +40,7 @@ class Register extends React.Component {
     this.setState({password:e.target.value});
   }
 
-  registerUser(){
+  registerUser(event){
     fetch('http://localhost:8080/register', {
       method:'POST',
       headers: {     
@@ -73,7 +74,7 @@ console.log(response)
             }
           });
       });
-
+      event.preventDefault();   
   }
   render(){
     return(
@@ -81,13 +82,15 @@ console.log(response)
             <center>
               <img src={incedo} alt="Incedo Logo" width="50%"/>
               </center>
+              <form onSubmit={this.registerUser}>
                 <table >
-                <tr><td><label>EMPLOYEE NAME</label></td><td><input type="text"  name="name"  onChange={this.handleEmployeeName}></input></td></tr>
-                <tr><td><label>EMPLOYEE ID</label></td><td><input type="text"  name="Id"  onChange={this.handleEmployeeId}></input></td></tr>
-                <tr><td><label>Contact No.</label></td><td><input type="text"  name="contact"  onChange={this.handleEmployeeContact}></input></td></tr>
+                <tr><td><label>EMPLOYEE NAME</label></td><td><input type="text"  name="name"  onChange={this.handleEmployeeName}  required></input></td></tr>
+                <tr><td><label>EMPLOYEE ID</label></td><td><input type="text"  name="Id"  onChange={this.handleEmployeeId} pattern="[0-9]*" maxLength='6' minLength='6' required></input></td></tr>
+                <tr><td><label>Contact No.</label></td><td><input type="text"  name="contact"  onChange={this.handleEmployeeContact} pattern="[0-9]*" maxLength='10' minLength='10' required></input></td></tr>
                 <tr><td><label>Password</label></td><td><input type="password"  name="password"  onChange={this.handlepassword}></input></td></tr>
                 </table>
-                 <center><button onClick={()=>this.registerUser()} >Sign Up</button></center>
+                 <center><input class ="getD" type="submit" value="Sign Up" /></center>
+                 </form>
           </div>   
 
     )
