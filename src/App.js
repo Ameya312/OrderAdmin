@@ -51,7 +51,8 @@ ReactDOM.render(<My_order employeeID = {this.state.LoginDetail.user_details.emp_
 }
 else if(this.state.LoginDetail.login_details.role=="ADMIN")
 {
-ReactDOM.render(<AdminHome/>, document.getElementById('root'))
+ReactDOM.render(<AdminHome employeeID = {this.state.LoginDetail.user_details.emp_id} employeeName={this.state.LoginDetail.user_details.name}
+  employeeContact={this.state.LoginDetail.user_details.phone_no} />, document.getElementById('root'))
 }
   }
 else{

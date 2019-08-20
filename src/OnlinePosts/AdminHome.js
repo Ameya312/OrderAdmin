@@ -7,6 +7,13 @@ import Register from '../Scripts/Register';
 import My_order from '../Scripts/my_order';
 
 class AdminHome extends Component {
+  constructor(props){
+    super(props);
+    this.state = { //state is by default an object
+      emp_id:this.props.employeeID,
+      name:this.props.employeeName,
+      phone_no: this.props.employeeContact,
+   }  }
   render() {
     return (
       <div>
@@ -24,7 +31,8 @@ class AdminHome extends Component {
             <tr>
               <th><button class="getD addwidth" onClick={()=>ReactDOM.render(<Register role = "ADMIN"/>, document.getElementById('root'))}>Register new admin</button></th>
               <th width="50"></th>
-              <th><button class="getD addwidth"  onClick={()=>ReactDOM.render(<My_order role = "ADMIN"/>, document.getElementById('root'))}>Order Snacks</button></th>
+              <th><button class="getD addwidth"  onClick={()=>ReactDOM.render(<My_order role = "ADMIN" employeeID = {this.state.emp_id} employeeName={this.state.name}
+  employeeContact={this.state.phone_no} />, document.getElementById('root'))}>Order Snacks</button></th>
             </tr> 
             </table>
         </div>
