@@ -7,11 +7,10 @@ import '../Styles/orderSummary.css';
 class My_order extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {EmpName:"",
+        this.state = {EmpName:this.props.employeeName,
                       user:1,
-
-                      EmpId:0,
-                      EmpPhone:0,
+                      EmpId:this.props.employeeID,
+                      EmpPhone:this.props.employeeContact,
                     total:0,
                     posts :[],
                   qty:0 ,
@@ -232,13 +231,20 @@ class My_order extends React.Component{
           <div class="gray1">
             <div class="white2">
               <form onSubmit={this.SaveOrderDetails}>
-                <table>
+                {/* <table>
                   <tr><td><label>Emp Id</label></td><td><input type="text" name="empId" maxLength='6' minLength='6' onChange={this.SetId} required></input></td>
                   <td><label>Emp name</label></td><td><input type="text" name="empname" onChange={this.SetName} required></input></td>
                   <td><label>contact no.</label></td><td><input type="text" name="contactNo." id="Contact" pattern="[0-9]*" onChange={this.SetPhone} maxLength='10' minLength='10' required></input></td></tr>
+                </table> */}
+                <table>
+                  <tr >
+                    <td class="TRLABEL"><label>Employee ID :</label><label>{this.state.EmpId}</label></td><td></td>
+                    <td class="TRLABEL"><label>Employee Name :</label><label>{this.state.EmpName}</label></td><td></td>
+                    <td class="TRLABEL"><label>Employee Contact :</label><label>{this.state.EmpPhone}</label></td><td></td>
+                  </tr>
                 </table>
-                <br/><br/>
-                <table id ="customers">
+          
+                <table>
                   <tr>
                             <th>Menu </th>
                             <th>Quantity</th>
