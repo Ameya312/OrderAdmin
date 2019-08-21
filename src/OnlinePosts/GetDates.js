@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import './GetDates.css';
 import ReactDOM from 'react-dom';
 import GetOnlinePosts from './GetOnlinePosts';
+import AdminHome from './AdminHome';
 
 
 class GetDates extends Component {
 
     constructor (props) {
         super(props)
-        this.URL_REPORT = "http://127.0.0.1:8000/rest/v1/report/?format=json";
-        this.tempURL = 'http://127.0.0.1:8000/rest/v1/report/?format=json&from_date=2009-07-22&to_date=2020-07-31';
+        this.URL_REPORT = "http://10.151.240.98:8000/rest/v1/report/?format=json";
+        this.tempURL = 'http://10.151.240.98:8000/rest/v1/report/?format=json&from_date=2009-07-22&to_date=2020-07-31';
         this.postData = "";
         this.option = "today";
         this.today = new Date();
@@ -19,7 +20,7 @@ class GetDates extends Component {
             from_date: '' ,
             to_date: '',
             posts : [],
-            url:'http://127.0.0.1:8000/rest/v1/report/?format=json',
+            url:'http://10.151.240.98:8000/rest/v1/report/?format=json',
         }
         this.onChange = this.onChange.bind(this)
     }
@@ -92,6 +93,7 @@ class GetDates extends Component {
                             <td><button onClick={this.getData} class="getD">GENERATE REPORT</button></td>
                             <td></td>
                         </tr>
+                        <button onClick={()=>ReactDOM.render(<AdminHome/>, document.getElementById('root'))} class="adminHome">ADMIN HOME</button>
                         <button onClick={()=>ReactDOM.render(<GetOnlinePosts/>, document.getElementById('root'))} class="getM">MENU CONFIGURATION</button>
                         
 
@@ -104,30 +106,30 @@ class GetDates extends Component {
                     <br />
                 </form>
                 <br/>
-                <div class="tabular">
+                <div>
                     {/* <h4>Report</h4> */}
-                    <table>
+                    <table class="tabular">
                         <tr>
-                            <th width="100">Employee_id</th>
-                            <th width="100">Cart_id</th>
-                            <th width="100">Snack_id</th>
-                            {/* <th width="100">name</th> */}
-                            <th width="100">Quantity</th>
-                            <th width="100">Date</th>
-                            <th width="100">Total</th>
-                            <th width="100">Payment_Status</th>
+                            <th width="10%">Date</th>
+                            <th width="10%">Cart id</th>
+                            <th width="10%">Employee id</th>
+                            <th width="20%">Name</th>
+                            <th width="20%">Snack name</th>
+                            <th width="10%">Quantity</th>
+                            <th width="10%">Total</th>
+                            <th width="10%">Payment Status</th>
                         </tr>
                     {
                         this.state.posts.map(post => (
                             <tr key={post.id} align="start">
-                                <td width="100">{post.emp_id}</td>
-                                <td width="100">{post.cart_id}</td>
-                                <td width="100">{post.snack_id}</td>
-                                {/* <td width="100">{post.name}</td> */}
-                                <td width="100">{post.qty}</td>
-                                <td width="100">{post.date_time}</td>
-                                <td width="100">{post.total}</td>
-                                <td width="100">{post.payment_status}</td>
+                                <td>{post.date_time}</td>
+                                <td>{post.cart_id}</td>
+                                <td>{post.emp_id}</td>
+                                <td>{post.emp_name}</td>
+                                <td>{post.snack_name}</td>
+                                <td>{post.qty}</td>
+                                <td>{post.ind_total}</td>
+                                <td>{post.payment_status}</td>
                             </tr>
                         ))
                     }

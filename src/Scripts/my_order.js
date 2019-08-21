@@ -36,7 +36,7 @@ class My_order extends React.Component{
       }
       
       componentDidMount(){
-        fetch('http://localhost:8000/user/order/')
+        fetch('http://10.151.240.98:8000/user/order/')
         .then( response => response.json())
         .then(
             // handle the result
@@ -91,7 +91,7 @@ class My_order extends React.Component{
       let name=""
       let price=0
       this.state.posts.map((post)=>
-    {  if(post.id===e.target.value)
+    {  if(post.id==e.target.value)
       {price=post.price
       name=post.name }
     }      
@@ -184,7 +184,7 @@ class My_order extends React.Component{
         }
 
         SaveOrderDetails(event) {
-          fetch('http://localhost:8080/user/order/save', {
+          fetch('http://10.151.240.98:8080/user/order/save', {
             method: 'POST',
             headers: {
               

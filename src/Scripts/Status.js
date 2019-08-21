@@ -11,7 +11,7 @@ constructor(props){
 }
 componentDidMount() {
     const orderId = localStorage.getItem('orderId');
-    fetch("http://localhost:8080/user/order/fetchStatus?orderId="+orderId+"", {
+    fetch("http://10.151.240.98:8080/user/order/fetchStatus?orderId="+orderId+"", {
 
         method:"GET"
     }).then(response => {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './GetOnline.css'
 import ReactDOM from 'react-dom';
 import GetDates from './GetDates';
+import AdminHome from './AdminHome'
 
 class GetOnlinePosts extends Component {
     constructor(props){
@@ -18,7 +19,7 @@ class GetOnlinePosts extends Component {
     }
 
     getData(){
-        fetch('http://localhost:8000/rest/v1/snacks/')
+        fetch('http://10.151.240.98:8000/rest/v1/snacks/')
         .then( response => response.json())
         .then(
             // handle the result
@@ -122,6 +123,7 @@ class GetOnlinePosts extends Component {
                         <tr>
                             <th><h2>MENU CONFIGURATION</h2></th>
                             <th width="850"></th>
+                            <th><button onClick={()=>ReactDOM.render(<AdminHome/>, document.getElementById('root'))} class="getD">ADMIN HOME</button></th>
                             <th><button onClick={()=>ReactDOM.render(<GetDates/>, document.getElementById('root'))} class="getD">REPORT GENERATION</button></th>
                         </tr>
                     </table>

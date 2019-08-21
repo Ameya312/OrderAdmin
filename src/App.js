@@ -24,7 +24,7 @@ fetchCredintials(){
 alert("USER name and Password  are Required Fields");
     }
     else{
-  fetch('http://localhost:8080/login', {
+  fetch('http://10.151.240.98:8080/login', {
       method:'POST',
       headers: {     
         "Content-type": "application/json; charset=UTF-8"
@@ -86,6 +86,7 @@ signUp(){
         <header className="App-header">
           <center>
               <img src={incedo} alt="Incedo Logo" width="50%"/>
+              <br/><br/><br/>
               <table>
               <tr>
                 <td><label>Employee ID</label></td><td><input type="text" placeholder="enter here" name="formUserName"  onChange={this.handleUsername}></input></td>
@@ -94,8 +95,8 @@ signUp(){
                 <td><label>password</label></td><td><input type="password" placeholder="enter here" name="PWD" onChange={this.handlePass}></input></td>
               </tr>
               <tr>
-                <td><button onClick = {()=>this.fetchCredintials()} class="appB">login</button></td>
-                <td><button class="appC" onClick={()=>this.signUp()} >Sign Up</button></td>
+                <td><button onClick = {()=>this.fetchCredintials()} class="appB">LOGIN</button></td>
+                <td><button class="appC" onClick={()=>this.signUp()} >SIGN UP</button></td>
               </tr>
             </table>
           </center>      

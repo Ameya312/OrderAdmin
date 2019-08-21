@@ -41,7 +41,7 @@ class Register extends React.Component {
   }
 
   registerUser(event){
-    fetch('http://localhost:8080/register', {
+    fetch('http://10.151.240.98:8080/register', {
       method:'POST',
       headers: {     
         "Content-type": "application/json; charset=UTF-8"

@@ -79,10 +79,23 @@ h1{
     border-radius: 4px;
     padding: 10px;
     position: absolute;
-    top: 20%;
+    top: 35%;
     left: 100%;
+    width:20%;
 }
 
 .tabular{
     padding: 20px;
+}
+
+.adminHome{
+    background-color: #fa7128;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    position: absolute;
+    top: 5%;
+    left: 100%;
+    width:20%;
 }

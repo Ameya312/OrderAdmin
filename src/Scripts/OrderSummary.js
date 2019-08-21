@@ -35,7 +35,7 @@ console.log(this.props.orderId)
 
   
     render() { 
-        const Link="http://localhost:8080/user/order/payDirectPaytm?emp_id="+this.state.EmployeeId+"&cart_id="+this.state.orderId+"&total="+this.state.OrderTotal+"&ph_no="+this.state.EmployeeContact+"";
+        const Link="http://10.151.240.98:8080/user/order/payDirectPaytm?emp_id="+this.state.EmployeeId+"&cart_id="+this.state.orderId+"&total="+this.state.OrderTotal+"&ph_no="+this.state.EmployeeContact+"";
         return (
             <div>
             <center>
