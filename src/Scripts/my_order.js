@@ -2,12 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import OrderSummary from './OrderSummary';
 import '../Styles/orderSummary.css';
+import SetEnvironment from '../configEnvironment/SetEnvironment'
+import AdminHome from '../OnlinePosts/AdminHome'
 
 
 class My_order extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {EmpName:this.props.employeeName,
+        this.state = {
+                      host:SetEnvironment.getHost_IP(),
+                      // save_order_URL:"http://localhost:8080/user/order/save",
+                      // Fetch_menu_URL:"http://localhost:8000/user/order/",
+                      EmpName:this.props.employeeName,
                       user:1,
                       EmpId:this.props.employeeID,
                       EmpPhone:this.props.employeeContact,
@@ -36,7 +42,16 @@ class My_order extends React.Component{
       }
       
       componentDidMount(){
-        fetch('http://10.151.240.98:8000/user/order/')
+        if(this.state.EmpId==undefined)
+        {
+          this.setState({
+            EmpId :  localStorage.getItem('employeeId'),
+            EmpName : localStorage.getItem('employeeName'),
+            EmpPhone : localStorage.getItem('employeeContact'),
+        });
+        }
+          const Fetch_menu_URL="http://"+this.state.host+":8000/user/order/";
+        fetch(Fetch_menu_URL)
         .then( response => response.json())
         .then(
             // handle the result
@@ -184,7 +199,8 @@ class My_order extends React.Component{
         }
 
         SaveOrderDetails(event) {
-          fetch('http://10.151.240.98:8080/user/order/save', {
+          const save_order_URL="http://"+this.state.host+":8080/user/order/save";
+          fetch(save_order_URL, {
             method: 'POST',
             headers: {
               

@@ -13,7 +13,16 @@ class AdminHome extends Component {
       emp_id:this.props.employeeID,
       name:this.props.employeeName,
       phone_no: this.props.employeeContact,
-   }  }
+   }
+  }
+
+   componentDidMount(){
+     if(this.state.emp_id!=undefined){
+    localStorage.setItem('employeeId', this.state.emp_id);
+    localStorage.setItem('employeeName', this.state.name);
+    localStorage.setItem('employeeContact', this.state.phone_no);
+     }
+   }
   render() {
     return (
       <div>

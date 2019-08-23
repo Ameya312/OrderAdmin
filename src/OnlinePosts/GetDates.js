@@ -3,14 +3,14 @@ import './GetDates.css';
 import ReactDOM from 'react-dom';
 import GetOnlinePosts from './GetOnlinePosts';
 import AdminHome from './AdminHome';
+import SetEnvironment from '../configEnvironment/SetEnvironment'
 
 
 class GetDates extends Component {
 
     constructor (props) {
         super(props)
-        this.URL_REPORT = "http://10.151.240.98:8000/rest/v1/report/?format=json";
-        this.tempURL = 'http://10.151.240.98:8000/rest/v1/report/?format=json&from_date=2009-07-22&to_date=2020-07-31';
+        this.URL_REPORT = "http://"+SetEnvironment.getHost_IP()+":8000/rest/v1/report/?format=json";
         this.postData = "";
         this.option = "today";
         this.today = new Date();
@@ -20,7 +20,6 @@ class GetDates extends Component {
             from_date: '' ,
             to_date: '',
             posts : [],
-            url:'http://10.151.240.98:8000/rest/v1/report/?format=json',
         }
         this.onChange = this.onChange.bind(this)
     }

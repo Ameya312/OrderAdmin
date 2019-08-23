@@ -5,11 +5,14 @@ import './App.css'
 import incedo from './download.png'
 import AdminHome from './OnlinePosts/AdminHome'
 import Register from './Scripts/Register';
+import SetEnvironment from './configEnvironment/SetEnvironment'
 
 class App extends  React.Component {
   constructor(props){
     super(props);
     this.state = { //state is by default an object
+      host:SetEnvironment.getHost_IP(),
+      Base_URL:"http://localhost:8080/login",
       Username:"blank",
       PWD:"blank",
       LoginDetail: [],
@@ -18,13 +21,23 @@ class App extends  React.Component {
    this.handlePass = this.handlePass.bind(this);
 
   }
+componentDidMount(){
+  localStorage.removeItem('employeeId');
+  localStorage.removeItem('employeeName');
+  localStorage.removeItem('employeeContact');
+  localStorage.removeItem('orderId');
 
+      this.setState({ 
+        Base_URL:"http://"+this.state.host+":8080/login"
+    });
+}
 fetchCredintials(){
     if(this.state.Username=="" || this.state.PWD==""){
 alert("USER name and Password  are Required Fields");
     }
     else{
-  fetch('http://10.151.240.98:8080/login', {
+      
+  fetch( this.state.Base_URL, {
       method:'POST',
       headers: {     
         "Content-type": "application/json; charset=UTF-8"

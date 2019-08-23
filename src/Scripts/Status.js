@@ -2,16 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../Styles/orderSummary.css';
 import App from '../App';
+import SetEnvironment from '../configEnvironment/SetEnvironment'
+
 
 class Status extends React.Component{
 constructor(props){
     super(props);
-    this.state = {status:"",
+    this.state = {
+        host:SetEnvironment.getHost_IP(),
+        status:"",
                 }
 }
 componentDidMount() {
     const orderId = localStorage.getItem('orderId');
-    fetch("http://10.151.240.98:8080/user/order/fetchStatus?orderId="+orderId+"", {
+    fetch("http://"+this.state.host+":8080/user/order/fetchStatus?orderId="+orderId+"", {
 
         method:"GET"
     }).then(response => {

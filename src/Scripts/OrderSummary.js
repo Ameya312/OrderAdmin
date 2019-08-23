@@ -1,11 +1,13 @@
 import React from 'react';
 import '../Styles/orderSummary.css';
+import SetEnvironment from '../configEnvironment/SetEnvironment'
 
 class OrderSummary extends React.Component {
 
   constructor(props){
       super(props);
       this.state = { //state is by default an object
+         host:SetEnvironment.getHost_IP(),
         students:this.props.orderSummaryData,
         orderId:this.props.orderId,
         EmployeeId : this.props.EmployeeId,
@@ -35,7 +37,7 @@ console.log(this.props.orderId)
 
   
     render() { 
-        const Link="http://10.151.240.98:8080/user/order/payDirectPaytm?emp_id="+this.state.EmployeeId+"&cart_id="+this.state.orderId+"&total="+this.state.OrderTotal+"&ph_no="+this.state.EmployeeContact+"";
+        const Link="http://"+this.state.host+":8080/user/order/payDirectPaytm?emp_id="+this.state.EmployeeId+"&cart_id="+this.state.orderId+"&total="+this.state.OrderTotal+"&ph_no="+this.state.EmployeeContact+"";
         return (
             <div>
             <center>

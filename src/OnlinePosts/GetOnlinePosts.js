@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import './GetOnline.css'
 import ReactDOM from 'react-dom';
 import GetDates from './GetDates';
-import AdminHome from './AdminHome'
+import AdminHome from './AdminHome';
+import SetEnvironment from '../configEnvironment/SetEnvironment';
 
 class GetOnlinePosts extends Component {
     constructor(props){
         super(props)
         this.state = {
+            host:SetEnvironment.getHost_IP(),
+            // menu_disp_URL:"http://localhost:8000/rest/v1/snacks/",
+            // menu_update_URL:"http://127.0.0.1:8000/user/order/bulk_create/",
             error : null,
             isLoaded : false,
             posts : [] ,
@@ -15,11 +19,16 @@ class GetOnlinePosts extends Component {
         this.onChange = this.onChange.bind(this)
     }
     componentDidMount(){
+        // this.setState({ 
+        //     menu_disp_URL:"http://"+this.state.host+":8000/rest/v1/snacks/",
+        //     menu_update_URL:"http://"+this.state.host+":8000/user/order/bulk_create/",
+        // });
         this.getData()
     }
 
     getData(){
-        fetch('http://10.151.240.98:8000/rest/v1/snacks/')
+        const menu_disp_URL="http://"+this.state.host+":8000/rest/v1/snacks/";
+        fetch(menu_disp_URL)
         .then( response => response.json())
         .then(
             // handle the result
@@ -84,7 +93,9 @@ class GetOnlinePosts extends Component {
 
         });
 
-        fetch('http://127.0.0.1:8000/user/order/bulk_create/', {
+
+        const menu_update_URL="http://"+this.state.host+":8000/user/order/bulk_create/";
+        fetch(menu_update_URL, {
             method: 'POST',
             headers:{
                 "Content-type": "application/json; charset=UTF-8"

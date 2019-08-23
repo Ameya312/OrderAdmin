@@ -3,6 +3,7 @@ import '../Styles/orderSummary.css';
 import incedo from '../download.png'
 import App from '../App';
 import ReactDOM from 'react-dom';
+import SetEnvironment from '../configEnvironment/SetEnvironment'
 
 
 class Register extends React.Component {
@@ -10,6 +11,8 @@ class Register extends React.Component {
   constructor(props){
       super(props);
       this.state = { //state is by default an object
+        host:SetEnvironment.getHost_IP(),
+        registration_URL:"http://localhost:8080/register",
         Registration_status:"NOT registered",
         EmployeeId : "",
         EmployeeName:"",
@@ -25,6 +28,13 @@ class Register extends React.Component {
      this.registerUser = this.registerUser.bind(this);
 
   }
+
+  componentDidMount(){
+    this.setState({ 
+      registration_URL:"http://"+this.state.host+":8080/register"
+      });
+}
+
   handleEmployeeName(e){
     this.setState({EmployeeName:e.target.value});
   }
@@ -41,7 +51,7 @@ class Register extends React.Component {
   }
 
   registerUser(event){
-    fetch('http://10.151.240.98:8080/register', {
+    fetch(this.state.registration_URL, {
       method:'POST',
       headers: {     
         "Content-type": "application/json; charset=UTF-8"
