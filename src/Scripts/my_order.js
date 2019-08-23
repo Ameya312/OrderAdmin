@@ -198,9 +198,34 @@ class My_order extends React.Component{
           this.setState({EmpPhone:e.target.value})
         }
 
+        SendData()
+        {
+           ;
+
+           this.state.data.map((arr1,index1)=>
+           this.state.data.map((arr2,index2)=>
+              
+                {
+                  if(arr1.snack_id==arr2.snack_id && index1<index2)
+                  {
+                    this.state.data[index1].total=this.state.data[index1].total+arr2.total;
+                    this.state.data[index1].qty=Number(this.state.data[index1].qty)+Number(arr2.qty);
+                    this.state.data.splice(index2, 1);
+                    // this.removePeople(index2)
+                  //  this.setState({data:this.state.data});
+                    //index2=index2-1;
+                  }
+                }
+              
+           )//arr2
+           )//arr1
+         
+        }
+
         SaveOrderDetails(event) {
           const save_order_URL="http://"+this.state.host+":8080/user/order/save";
           fetch(save_order_URL, {
+
             method: 'POST',
             headers: {
               
