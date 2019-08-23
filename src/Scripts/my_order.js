@@ -223,6 +223,7 @@ class My_order extends React.Component{
         }
 
         SaveOrderDetails(event) {
+          this.SendData();
           const save_order_URL="http://"+this.state.host+":8080/user/order/save";
           fetch(save_order_URL, {
 
